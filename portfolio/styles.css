@@ -1,0 +1,338 @@
+:root {
+    --bg-color: #111827;
+    --text-color: #f3f4f6;
+    --primary-color: #3b82f6;
+    --secondary-color: #8b5cf6;
+    --accent-color: #ec4899;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    animation: fadeIn 1s ease-out;
+}
+
+h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.social-links a {
+    color: var(--text-color);
+    margin-left: 1rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+}
+
+section {
+    margin-bottom: 3rem;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(20px); /* Slightly offset */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Visible state for sections */
+section.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Reset offset */
+}
+
+/* Unload state for sections */
+section.unload {
+    opacity: 0; /* Fade out */
+    transform: translateY(20px); /* Slightly offset */
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+h2 svg {
+    margin-right: 0.5rem;
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.badge[data-skill="angular"] {
+    background: linear-gradient(45deg, #dd0031, #c3002f);
+    color: white;
+}
+
+.game-card {
+    transform: perspective(1000px) rotateY(0deg);
+    transition: transform 0.6s, box-shadow 0.3s;
+    position: relative;
+    background: linear-gradient(145deg, #1f2937, #111827);
+}
+
+.game-card:hover {
+    transform: perspective(1000px) rotateY(5deg) translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.game-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent 50%, rgba(59,130,246,0.1));
+    pointer-events: none;
+}
+
+.badge:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 4px;
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--accent-color));
+    z-index: 1000;
+    transition: width 0.3s ease;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.profile-pic {
+    width: 100px; 
+    height: auto;
+    margin-right: 1rem;
+}
+
+#contact {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-card {
+    background-color: #1f1f1f;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    max-width: 600px;
+    width: 100%;
+}
+
+.contact-title {
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.form-input,
+.form-textarea {
+    padding: 0.75rem;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: var(--text-color);
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    outline: none;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.reset-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #444;
+    color: var(--text-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reset-button:hover {
+    background-color: #666;
+    transform: scale(1.05);
+}
+
+/* Certificate Section Enhancements */
+.certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.certificate-card {
+    background: linear-gradient(145deg, #1f2937, #111827);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certificate-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary-color);
+}
+
+.certificate-card h3 a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.certificate-card h3 a:hover {
+    color: var(--primary-color);
+}
+
+.certificate-badge {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .social-links {
+        margin-top: 1rem;
+    }
+
+    .social-links a {
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+
+    .contact-form {
+        flex-direction: column;
+    }
+
+    .form-group {
+        flex-basis: 100%;
+    }
+}
